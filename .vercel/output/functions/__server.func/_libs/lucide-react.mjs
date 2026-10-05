@@ -539,6 +539,24 @@ var ShieldAlert = createLucideIcon("shield-alert", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Smartphone = createLucideIcon("smartphone", [["rect", {
+	width: "14",
+	height: "20",
+	x: "5",
+	y: "2",
+	rx: "2",
+	ry: "2",
+	key: "1yt0o3"
+}], ["path", {
+	d: "M12 18h.01",
+	key: "mhygvu"
+}]]);
+/**
+* @license lucide-react v0.510.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Trash2 = createLucideIcon("trash-2", [
 	["path", {
 		d: "M3 6h18",
@@ -700,4 +718,4 @@ var Wifi = createLucideIcon("wifi", [
 	}]
 ]);
 //#endregion
-export { ChartLine as C, Check as S, Battery as T, Fingerprint as _, TriangleAlert as a, ChevronRight as b, ScrollText as c, Plus as d, Mic as f, House as g, Keyboard as h, Users as i, Radio as l, Lock as m, WifiOff as n, Trash2 as o, MapPin as p, Watch as r, ShieldAlert as s, Wifi as t, Presentation as u, Film as v, Calculator as w, ChevronLeft as x, Download as y };
+export { Check as C, Battery as E, ChevronLeft as S, Calculator as T, House as _, TriangleAlert as a, Download as b, ShieldAlert as c, Presentation as d, Plus as f, Keyboard as g, Lock as h, Users as i, ScrollText as l, MapPin as m, WifiOff as n, Trash2 as o, Mic as p, Watch as r, Smartphone as s, Wifi as t, Radio as u, Fingerprint as v, ChartLine as w, ChevronRight as x, Film as y };

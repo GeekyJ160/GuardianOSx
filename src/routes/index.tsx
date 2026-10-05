@@ -117,8 +117,7 @@ function Home() {
             The briefing
           </h2>
           <p className="mt-2 max-w-lg text-sm text-muted">
-            Nine-slide pitch and a vertical reel. Stay protected. Preserve the
-            truth.
+            Six social cards, a vertical reel, and the nine-slide pitch.
           </p>
         </div>
         <Button asChild variant="secondary">

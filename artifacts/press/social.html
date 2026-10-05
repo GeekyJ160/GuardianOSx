@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GuardianOS — Social</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: #000; }
+      .card {
+        width: 1080px;
+        height: 1920px;
+        position: relative;
+        overflow: hidden;
+        color: #ecece8;
+        font-family: "IBM Plex Sans", sans-serif;
+        background: #0a0b0d;
+      }
+      .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      .veil {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10,11,13,.42) 0%, rgba(10,11,13,.62) 38%, rgba(10,11,13,.94) 100%);
+      }
+      .veil-full { background: rgba(10,11,13,.9); }
+      .inner {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        padding: 140px 88px 160px;
+        display: flex;
+        flex-direction: column;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        font-size: 22px;
+        color: #c8ccd4;
+      }
+      .kicker {
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: #c45c26;
+        font-size: 22px;
+        font-weight: 500;
+      }
+      h1 {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 500;
+        font-size: 92px;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        margin-top: 22px;
+      }
+      .sub {
+        margin-top: 28px;
+        font-size: 34px;
+        color: #9a9aa3;
+        line-height: 1.4;
+        max-width: 16ch;
+      }
+      .grow { flex: 1; }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 18px;
+        color: #6e6e76;
+      }
+      .stack { margin-top: 48px; display: grid; gap: 22px; }
+      .stack li {
+        list-style: none;
+        border-left: 3px solid #c45c26;
+        padding-left: 28px;
+      }
+      .stack b {
+        display: block;
+        font-family: "Newsreader", Georgia, serif;
+        font-size: 56px;
+        font-weight: 500;
+      }
+      .stack span {
+        display: block;
+        margin-top: 6px;
+        font-size: 26px;
+        color: #9a9aa3;
+      }
+      .quote {
+        font-family: "Newsreader", Georgia, serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 64px;
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card" id="c1">
+      <img class="bg" src="img/capsule-vert.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="inner">
+        <div class="brand">
+          <svg width="42" height="42" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="10" y="3" width="12" height="26" rx="6" fill="none" stroke="#c8ccd4" stroke-width="1.5"/>
+            <circle cx="16" cy="16" r="2.2" fill="#c45c26"/>
+          </svg>
+          GuardianOS
+        </div>
+        <div class="grow"></div>
+        <p class="kicker">Digital guardian OS</p>
+        <h1>Stay protected. Preserve the truth.</h1>
+        <p class="sub">The black box for your real life. Not another SOS button.</p>
+        <div class="grow"></div>
+        <p class="foot"><span>Swipe</span><span>01 / 06</span></p>
+      </div>
+    </section>
+
+    <section class="card" id="c2">
+      <img class="bg" src="img/street-vert.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="inner">
+        <p class="kicker">The hours that look ordinary</p>
+        <div class="grow"></div>
+        <h1>Late meeting. First date. Rideshare.</h1>
+        <p class="sub">If something happens, they do not want guesses. They want the record.</p>
+        <div class="grow"></div>
+        <p class="foot"><span>GuardianOS</span><span>02 / 06</span></p>
+      </div>
+    </section>
+
+    <section class="card" id="c3">
+      <img class="bg" src="img/capsule-stone.jpg" alt="" />
+      <div class="veil veil-full"></div>
+      <div class="inner">
+        <p class="kicker">One capsule</p>
+        <h1 style="font-size: 72px">Five verbs. No panic button.</h1>
+        <ul class="stack">
+          <li><b>Prevent</b><span>Authorize the session before you go.</span></li>
+          <li><b>Detect</b><span>Missed check-ins and route drift.</span></li>
+          <li><b>Preserve</b><span>Facts stay original.</span></li>
+          <li><b>Escalate</b><span>Only the protocol you wrote.</span></li>
+          <li><b>Reconstruct</b><span>Observed events. Never a verdict.</span></li>
+        </ul>
+        <div class="grow"></div>
+        <p class="foot"><span>GuardianOS</span><span>03 / 06</span></p>
+      </div>
+    </section>
+
+    <section class="card" id="c4">
+      <img class="bg" src="img/night-street.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="inner">
+        <p class="kicker">Guardian Session</p>
+        <div class="grow"></div>
+        <p class="quote">“If I don’t check in by 11:30, start my protocol.”</p>
+        <p class="sub">It records the context you authorized. It does not decide if you are in danger.</p>
+        <div class="grow"></div>
+        <p class="foot"><span>GuardianOS</span><span>04 / 06</span></p>
+      </div>
+    </section>
+
+    <section class="card" id="c5">
+      <img class="bg" src="img/circle-lights.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="inner">
+        <p class="kicker">Circle · Protocol</p>
+        <div class="grow"></div>
+        <h1>Your people. Your rules.</h1>
+        <p class="sub">Missed check-in follows only what you authorized — including dead-man evidence escrow.</p>
+        <div class="grow"></div>
+        <p class="foot"><span>GuardianOS</span><span>05 / 06</span></p>
+      </div>
+    </section>
+
+    <section class="card" id="c6">
+      <img class="bg" src="img/capsule-vert.jpg" alt="" />
+      <div class="veil"></div>
+      <div class="inner" style="text-align: center; align-items: center">
+        <div class="brand">GuardianOS</div>
+        <div class="grow"></div>
+        <p class="kicker">Start a session</p>
+        <h1>Keep the record original.</h1>
+        <p class="sub" style="max-width: 18ch">Write your protocol. Observed events. Never a verdict.</p>
+        <div class="grow"></div>
+        <p class="foot" style="width: 100%"><span>Digital guardian OS</span><span>06 / 06</span></p>
+      </div>
+    </section>
+  </body>
+</html>
