@@ -1,0 +1,25 @@
+# Task: fix this app so the platform can build and run it
+
+The platform's pre-build check found the problems below. Fix EACH one in the code.
+"must fix" blocks the build; "should fix" won't block it but can stop the app from
+starting. Do not skip any.
+
+## Problems found
+1. No Dockerfile (must fix)
+   No Dockerfile at your repo root — there is nothing to build.
+   → Fix: Add a Dockerfile at the root of your repo.
+2. Secret committed: generic-api-key (must fix)
+   src/lib/auth/preview.ts:20
+   → Fix: Remove the secret from the code, move it to an env var, and rotate it.
+
+## While you are here — the app must also meet these deploy rules
+- Dockerfile at the project ROOT, starting with `FROM <base-image>` and a `CMD`/`ENTRYPOINT` that starts the server.
+- Listen on host `0.0.0.0` and the `PORT` env var (`process.env.PORT`, always 8080) — NOT `127.0.0.1`/`localhost`.
+- A long-running server (it must not run once and exit).
+- Read all config from environment variables — never commit secrets. These env vars are injected by the platform and are read-only — do NOT set or hardcode them: `PORT` (always 8080), `DATABASE_URL`, and any `META_*`. Your own keys (e.g. `OPENAI_API_KEY`) go in the app's Env vars panel.
+- If the app uses a database, read `process.env.DATABASE_URL` (the platform injects it) — do NOT bundle a database, hardcode credentials, or point at `localhost`.
+- Log to stdout/stderr (`console.log`/`print`), never to files: those two streams are the only place the platform reads the app's logs from.
+- The container disk is wiped on every deploy and restart, so keep data in the database (`DATABASE_URL`) and uploaded files in an external object store. No local files, SQLite or embedded database as storage, and no `VOLUME` in the Dockerfile.
+- The image may take at most 15.00 GB (15000000000 bytes) unpacked (all layers after decompression, what it takes on disk): add a `.dockerignore` and use a multi-stage build so only what the app runs ships.
+
+When you are done: commit and push your changes. The app's page then says a newer version is waiting; the owner puts it online with the "Put the new version online" button (or it goes online by itself when auto-update from GitHub is on). Only a fresh deploy picks up your changes.

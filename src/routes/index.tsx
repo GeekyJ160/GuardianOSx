@@ -45,6 +45,28 @@ function Home() {
         </p>
       </header>
 
+      <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {(
+          [
+            ["/brand/eye.jpg", "Eye mark", "object-center"],
+            ["/brand/shield-circuit.jpg", "Circuit shield", "object-center"],
+            ["/brand/shield-wave.jpg", "Signal shield", "object-top"],
+            ["/brand/mark-g.jpg", "G monogram", "object-center"],
+          ] as const
+        ).map(([src, label, pos]) => (
+          <figure
+            key={src}
+            className="overflow-hidden rounded-lg bg-surface shadow-[var(--shadow-border)]"
+          >
+            <img
+              src={src}
+              alt={label}
+              className={`aspect-square w-full object-cover ${pos}`}
+            />
+          </figure>
+        ))}
+      </section>
+
       {session ? (
         <Card className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-3">

@@ -103,15 +103,17 @@ function Campaign() {
           <div className="w-full max-w-sm space-y-3">
             <div className="overflow-hidden rounded-xl bg-black shadow-[var(--shadow-border)]">
               <video
+                key="guardian-reel-2"
                 className="aspect-[9/16] w-full"
-                src="/campaign/DigitalGuardian-social-reel.mp4"
+                src="/campaign/DigitalGuardian-social-reel.mp4?v=2"
                 controls
                 playsInline
-                poster="/campaign/social/c1.png"
+                poster="/campaign/reel-poster.jpg"
               />
             </div>
+            <p className="text-center text-sm text-muted">Fifteen seconds. Sound on.</p>
             <Button asChild variant="secondary" className="w-full">
-              <a href="/campaign/DigitalGuardian-social-reel.mp4" download>
+              <a href="/campaign/DigitalGuardian-social-reel.mp4?v=2" download>
                 <Download className="size-3.5" />
                 Download reel
               </a>

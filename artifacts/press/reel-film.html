@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>GuardianOS film</title>
+    <style>
+      @font-face {
+        font-family: "IBM Plex Sans";
+        font-weight: 400;
+        font-style: normal;
+        src: url("fonts/plex-400.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "IBM Plex Sans";
+        font-weight: 500;
+        font-style: normal;
+        src: url("fonts/plex-500.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "Newsreader";
+        font-weight: 500;
+        font-style: normal;
+        src: url("fonts/news-roman.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "Newsreader";
+        font-weight: 500;
+        font-style: italic;
+        src: url("fonts/news-italic.ttf") format("truetype");
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #0a0b0d;
+        -webkit-font-smoothing: antialiased;
+      }
+      #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0a0b0d; }
+      .scene { position: absolute; inset: 0; opacity: 0; }
+      .grain {
+        position: absolute;
+        inset: -40px;
+        background: url("img/grain.png");
+        opacity: 0.16;
+        mix-blend-mode: overlay;
+        pointer-events: none;
+      }
+      .block {
+        position: absolute;
+        left: 132px;
+        right: 120px;
+        top: 50%;
+        transform: translateY(-54%);
+      }
+      .kicker {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: #c45c26;
+      }
+      .rule {
+        width: 72px;
+        height: 2px;
+        margin: 28px 0 36px;
+        background: #c45c26;
+        transform-origin: left center;
+      }
+      h1 {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 500;
+        font-size: 92px;
+        line-height: 1.02;
+        letter-spacing: -0.032em;
+        color: #f4f1ea;
+      }
+      h1 span { display: block; }
+      h1 span + span { margin-top: 10px; }
+      .art {
+        position: absolute;
+        left: 0;
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      .art img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 2.4%, #000 97.6%, transparent 100%);
+        mask-image: linear-gradient(180deg, transparent 0%, #000 2.4%, #000 97.6%, transparent 100%);
+      }
+      #eye { background: #121640; }
+      #eye .art { top: 420px; }
+      #shield { background: #f7f7f8; }
+      #shield .art { top: 150px; }
+      .def {
+        position: absolute;
+        left: 96px;
+        right: 96px;
+        top: 1096px;
+        text-align: center;
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 500;
+        font-size: 60px;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+        color: #16181d;
+      }
+      .verbs { list-style: none; margin-top: 28px; }
+      .verbs li {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 500;
+        font-size: 84px;
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        color: #f4f1ea;
+      }
+      .note {
+        margin-top: 36px;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        letter-spacing: 0.01em;
+        color: #9c9ca4;
+      }
+      #verbs { background: #0a0b0d; }
+      #title { background: #0a0b0d; }
+      .bleed { position: absolute; inset: 0; overflow: hidden; }
+      .bleed img {
+        position: absolute;
+        left: -4%;
+        top: -4%;
+        width: 108%;
+        height: 108%;
+        object-fit: cover;
+        object-position: center 70%;
+      }
+      .scrim {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(8,9,12,0.72) 0%, rgba(8,9,12,0.28) 28%, rgba(8,9,12,0.18) 52%, rgba(8,9,12,0.78) 100%);
+      }
+      .quote-wrap {
+        position: absolute;
+        left: 96px;
+        right: 120px;
+        top: 300px;
+      }
+      blockquote {
+        font-family: "Newsreader", Georgia, serif;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 78px;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        color: #f4f1ea;
+      }
+      #end { background: #898cf1; }
+      #end .art { top: 200px; }
+      .cta {
+        position: absolute;
+        left: 80px;
+        right: 80px;
+        top: 1216px;
+        text-align: center;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: 500;
+        font-size: 26px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: #14162b;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage">
+      <section class="scene" id="title">
+        <div class="grain"></div>
+        <div class="block">
+          <p class="kicker" id="kicker">GuardianOS</p>
+          <div class="rule" id="rule"></div>
+          <h1>
+            <span id="l1">Stay protected.</span>
+            <span id="l2">Preserve the truth.</span>
+          </h1>
+        </div>
+      </section>
+
+      <section class="scene" id="eye">
+        <div class="art"><img id="eye-img" src="img/eye.jpg" alt="" /></div>
+      </section>
+
+      <section class="scene" id="shield">
+        <div class="art"><img id="shield-img" src="img/shield-circuit.jpg" alt="" /></div>
+        <p class="def" id="def">The black box<br />for your real life.</p>
+      </section>
+
+      <section class="scene" id="verbs">
+        <div class="grain"></div>
+        <div class="block">
+          <p class="kicker" id="vk">One capsule</p>
+          <div class="rule" id="vrule"></div>
+          <ol class="verbs">
+            <li id="v0">Prevent</li>
+            <li id="v1">Detect</li>
+            <li id="v2">Preserve</li>
+            <li id="v3">Escalate</li>
+            <li id="v4">Reconstruct</li>
+          </ol>
+          <p class="note" id="vnote">Observed events. Never a verdict.</p>
+        </div>
+      </section>
+
+      <section class="scene" id="night">
+        <div class="bleed"><img id="night-img" src="img/night-street.jpg" alt="" /></div>
+        <div class="scrim"></div>
+        <div class="grain"></div>
+        <div class="quote-wrap">
+          <blockquote id="quote">If I don’t check in,<br />start my protocol.</blockquote>
+        </div>
+      </section>
+
+      <section class="scene" id="end">
+        <div class="art"><img id="end-img" src="img/mark-g.jpg" alt="" /></div>
+        <p class="cta" id="cta">Begin a session</p>
+      </section>
+    </div>
+    <script>
+      const DUR = 15000;
+      const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+      const $ = (id) => document.getElementById(id);
+
+      function anim(el, keys) {
+        const frames = keys.map((k) => {
+          const frame = {
+            offset: k.t / 15,
+            opacity: k.opacity,
+            transform: `translateY(${k.y || 0}px) scale(${k.scale == null ? 1 : k.scale})`,
+          };
+          if (k.ease) frame.easing = k.ease;
+          return frame;
+        });
+        for (let i = frames.length - 1; i > 0; i--) {
+          if (frames[i].offset <= frames[i - 1].offset) frames.splice(i, 1);
+        }
+        if (frames[0].offset > 0) {
+          frames.unshift({ ...frames[0], offset: 0 });
+        }
+        if (frames[frames.length - 1].offset < 1) {
+          frames.push({ ...frames[frames.length - 1], offset: 1, easing: "linear" });
+        }
+        const a = el.animate(frames, { duration: DUR, fill: "both", easing: "linear" });
+        a.pause();
+      }
+
+      function scene(el, inn, out) {
+        const keys = [
+          { t: 0, opacity: 0 },
+          { t: inn, opacity: 0, ease: EASE },
+          { t: inn + 0.28, opacity: 1 },
+        ];
+        if (out == null) {
+          keys.push({ t: 15, opacity: 1 });
+        } else {
+          keys.push(
+            { t: out, opacity: 1 },
+            { t: out + 0.16, opacity: 0 },
+            { t: 15, opacity: 0 },
+          );
+        }
+        anim(el, keys);
+      }
+
+      function rise(el, t) {
+        anim(el, [
+          { t: 0, opacity: 0, y: 34 },
+          { t, opacity: 0, y: 34, ease: EASE },
+          { t: t + 0.72, opacity: 1, y: 0 },
+          { t: 15, opacity: 1, y: 0 },
+        ]);
+      }
+
+      function grow(el, t) {
+        const a = el.animate(
+          [
+            { transform: "scaleX(0)", offset: 0 },
+            { transform: "scaleX(0)", offset: t / 15 },
+            { transform: "scaleX(1)", offset: (t + 0.55) / 15, easing: EASE },
+            { transform: "scaleX(1)", offset: 1 },
+          ],
+          { duration: DUR, fill: "both", easing: "linear" },
+        );
+        a.pause();
+      }
+
+      function drift(el, inn, out, from, to) {
+        const keys = [
+          { t: 0, opacity: 1, scale: from },
+          { t: inn, opacity: 1, scale: from },
+          { t: out, opacity: 1, scale: to },
+        ];
+        if (out < 14.9) keys.push({ t: 15, opacity: 1, scale: to });
+        anim(el, keys);
+      }
+
+      scene($("title"), 0.05, 2.78);
+      rise($("kicker"), 0.18);
+      grow($("rule"), 0.36);
+      rise($("l1"), 0.46);
+      rise($("l2"), 0.9);
+
+      scene($("eye"), 2.98, 4.9);
+      drift($("eye-img"), 2.98, 4.9, 1.045, 1);
+
+      scene($("shield"), 5.1, 7.24);
+      drift($("shield-img"), 5.1, 7.24, 1.04, 1);
+      rise($("def"), 5.5);
+
+      scene($("verbs"), 7.44, 10.9);
+      rise($("vk"), 7.58);
+      grow($("vrule"), 7.7);
+      ["v0", "v1", "v2", "v3", "v4"].forEach((id, i) => rise($(id), 7.92 + i * 0.22));
+      rise($("vnote"), 9.18);
+
+      scene($("night"), 11.1, 13.04);
+      drift($("night-img"), 11.1, 13.04, 1.08, 1.0);
+      rise($("quote"), 11.32);
+
+      scene($("end"), 13.22, null);
+      drift($("end-img"), 13.22, 15, 1.03, 1);
+      rise($("cta"), 13.58);
+
+      document.fonts.ready.then(() => {
+        window.__ready = true;
+      });
+    </script>
+  </body>
+</html>

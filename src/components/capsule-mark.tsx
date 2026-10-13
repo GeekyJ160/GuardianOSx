@@ -8,30 +8,22 @@ export function CapsuleMark({
   live?: boolean;
 }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      className={cn("text-accent", className)}
+    <span
+      className={cn(
+        "relative inline-flex shrink-0 overflow-hidden rounded-full",
+        className,
+      )}
       aria-hidden="true"
     >
-      <rect
-        x="10"
-        y="3"
-        width="12"
-        height="26"
-        rx="6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
+      <img
+        src="/brand/mark-g.jpg"
+        alt=""
+        className="size-full object-cover object-center"
       />
-      <rect x="13" y="8" width="6" height="1.5" rx="0.75" fill="currentColor" />
-      <rect x="13" y="22.5" width="6" height="1.5" rx="0.75" fill="currentColor" />
-      <circle
-        cx="16"
-        cy="16"
-        r="2.2"
-        fill={live ? "var(--color-live)" : "currentColor"}
-      />
-    </svg>
+      {live ? (
+        <span className="absolute right-0 bottom-0 size-2 rounded-full bg-live ring-2 ring-bg" />
+      ) : null}
+    </span>
   );
 }
 
